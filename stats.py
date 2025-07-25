@@ -1,9 +1,12 @@
 # Contains function definitions for analysis of book text
 
 # Function get_num_words
-# Argument(s):
-# Logic:
-# Return(s):
+def get_book_text(book):
+    with open(book) as b:
+        file_contents = b.read()
+    return file_contents
+
+# Function get_num_words
 def get_num_words(book):
     book_words = book.split()
     return len(book_words)
@@ -41,5 +44,24 @@ def get_num_characters(book):
 def sort_on(items):
     return items["value"]
 
-def report_printing(num_words, num_characters):
-    pass
+def print_report(book, num_words, num_characters):
+
+    # Header
+    print("============ BOOKBOT ============")
+
+    # Book Path
+    print(f"Analyzing book found at {book}...")
+
+    # Word Count
+    print("----------- Word Count ----------")
+    print(f"Found {num_words} total words")
+
+    # Character count
+    print("--------- Character Count -------")
+    for character in num_characters:
+        print(f"{character["key"]}: {character["value"]}")
+
+    # Report End
+    print("============= END ===============")
+
+    return

@@ -1,4 +1,4 @@
-from stats import get_num_words, get_num_characters, sort_on
+from stats import get_book_text, get_num_words, get_num_characters, sort_on, print_report
 
 def main():
 
@@ -6,21 +6,15 @@ def main():
 
     book_text = get_book_text(book)
 
-    print(f"{get_num_words(book_text)} words found in the document")
+    book_words = get_num_words(book_text)
 
     book_text_characters = get_num_characters(book_text)
 
     book_text_characters.sort(reverse=True, key=sort_on)
 
-    for character in book_text_characters:
-        print(f"'{character["key"]}': {character["value"]}")
-
+    print_report(book, book_words, book_text_characters)
 
     return
 
-def get_book_text(book):
-    with open(book) as b:
-        file_contents = b.read()
-    return file_contents
 
 main()
