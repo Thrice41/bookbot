@@ -1,5 +1,21 @@
+from stats import get_num_words, get_num_characters, sort_on
+
 def main():
-    print(get_book_text("./books/frankenstein.txt"))
+
+    book = "./books/frankenstein.txt"
+
+    book_text = get_book_text(book)
+
+    print(f"{get_num_words(book_text)} words found in the document")
+
+    book_text_characters = get_num_characters(book_text)
+
+    book_text_characters.sort(reverse=True, key=sort_on)
+
+    for character in book_text_characters:
+        print(f"'{character["key"]}': {character["value"]}")
+
+
     return
 
 def get_book_text(book):
